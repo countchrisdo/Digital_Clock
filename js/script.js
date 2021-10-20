@@ -1,36 +1,77 @@
-setInterval(() => {
-    const time = document.querySelector(".display #time");
-    let date = new Date();
-    let hours = date.getHours();
-    let minutes = date.getMinutes();
-    let seconds = date.getSeconds();
-    let millisec = Math.floor(date.getMilliseconds() / 10).toFixed(0);
+function updateClock() {
+  var now = new Date();
+  var dname = now.getDay(),
+    mo = now.getMonth(),
+    dnum = now.getDate(),
+    yr = now.getFullYear(),
+    hou = now.getHours(),
+    min = now.getMinutes(),
+    sec = now.getSeconds(),
+    pe = "AM";
 
-    let day_night = "AM";
-    if (hours > 12) {
-      day_night = "PM";
-      hours = hours - 12;
-    }
-    if (seconds < 10) {
-      seconds = "0" + seconds;
-    }
-    if (millisec < 10) {
-      millisec = "0" + millisec;
-    }
-    if (minutes < 10) {
-      minutes = "0" + minutes;
-    }
-    if (hours < 10) {
-      hours = "0" + hours;
-    }
-    time.textContent =
-      hours +
-      ":" +
-      minutes +
-      ":" +
-      seconds +
-      ":" +
-      millisec +
-      " " +
-      day_night;
-  });
+  if (hou >= 12) {
+    pe = "PM";
+  }
+  if (hou == 0) {
+    hou = 12;
+  }
+  if (hou > 12) {
+    hou = hou - 12;
+  }
+
+  Number.prototype.pad = function (digits) {
+    for (var n = this.toString(); n.length < digits; n = 0 + n);
+    return n;
+  };
+
+  var months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "Augest",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  var week = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  var ids = [
+    "dayname",
+    "month",
+    "daynum",
+    "year",
+    "hour",
+    "minutes",
+    "seconds",
+    "period",
+  ];
+  var values = [
+    week[dname],
+    months[mo],
+    dnum.pad(2),
+    yr,
+    hou.pad(2),
+    min.pad(2),
+    sec.pad(2),
+    pe,
+  ];
+  for (var i = 0; i < ids.length; i++)
+    document.getElementById(ids[i]).firstChild.nodeValue = values[i];
+}
+
+function initClock() {
+  updateClock();
+  window.setInterval("updateClock()", 1);
+}
