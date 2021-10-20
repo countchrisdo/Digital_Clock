@@ -1,2 +1,4 @@
-A digital clock I made for my personal use.
+# Digital Clock/Calender
+
+A digital Clock/Calender I made for a raspberry pi on my desk.
 
