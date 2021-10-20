@@ -4,12 +4,36 @@
 }
 
 body{
-    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    background: #10101E;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #fff;
+    font-weight: bold;
+    width: 340px;
+    padding: 15px 10px;
+    /* border: 3px solid #2E94E3; */
+    /* border-radius: 5px; */
+    margin: 0 auto;
+    text-align: center;
+    background: #2E94E3;
+    margin-top: 20px;
+
+    box-shadow: 0px 0px 10px #2E94E3;
+}
+
+.main-content{
+    height: 20vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #10101E;
+
 }
+
+
 
 .datetime{
     font-size: 2rem;
